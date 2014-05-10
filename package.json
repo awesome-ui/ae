@@ -6,7 +6,13 @@
     },
 
     "devDependencies": {
-        "bower": "latest"
+
+        "bower": "latest",
+
+        "gulp": "latest",
+        "gulp-less": "latest",
+        "gulp-jade": "latest"
+
     },
 
     "license": "GPL"
