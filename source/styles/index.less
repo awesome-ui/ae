@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 html,
 body {
     min-height: 100%;
@@ -13,15 +17,16 @@ body {
 }
 
 body {
-    padding: 30px;
+    position: relative;
+    overflow: auto;
 }
 
 
 
 .row {
     position: relative;
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -1em;
+    margin-right: -1em;
 
     &:before,
     &:after {
@@ -37,8 +42,8 @@ body {
     float: left;
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .col-xs-12 {
@@ -567,5 +572,69 @@ body {
     .columns-lg-3 {
         -webkit-columns: 3;
         columns: 3;
+    }
+}
+
+
+
+@app_font-size: 16px;
+@app_background-color: #ffffff;
+
+@app__head_height: 5em;
+@app__head_padding: 2em;
+@app__head_line-height: 1em;
+@app__head_background-color: #f2f2f2;
+
+@app__foot_height: 2em;
+@app__foot_padding: .5em 2em;
+@app__foot_line-height: @app__head_line-height;
+
+@app__body_padding: @app__head_padding;
+@app__body_line-height: @app__head_line-height;
+
+.b-app {
+    display: block;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    font-family: arial, sans-serif;
+    font-size: @app_font-size;
+    background-color: @app_background-color;
+    @media (min-width: 768px) {
+        font-size: @app_font-size - (@app_font-size / 8);
+    }
+    @media (min-width: 1200px) {
+        font-size: @app_font-size;
+    }
+
+    &__over {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        overflow-y: scroll;
+    }
+    &__view {
+        position: absolute; top: 0; left: 0;
+        width: 100%; height: 100%;
+        overflow-y: scroll;
+    }
+
+    &__head {
+        position: absolute; z-index: 7;
+        width: 100%; height: @app__head_height;
+        padding: @app__head_padding;
+        line-height: @app__head_line-height;
+        background-color: @app__head_background-color;
+    }
+    &__body {
+        position: relative;
+        width: 100%; min-height: 100%;
+        padding: @app__body_padding; padding-top: @app__head_height;
+        line-height: @app__body_line-height;
+    }
+    &__foot {
+        position: absolute;
+        width: 100%; height: @app__foot_height;
+        margin: 0; margin-top: -@app__foot_height;
+        padding: @app__foot_padding;
+        line-height: @app__foot_line-height;
     }
 }
